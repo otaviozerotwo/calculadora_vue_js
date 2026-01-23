@@ -15,7 +15,23 @@
     return state.vlr_input_2 = e.target.value;
   }
 
-  const getOperation = (e) => {
+  const sumOperation = (num1, num2) => {
+    return num1 + num2;
+  }
+
+  const minusOperation = (num1, num2) => {
+    return num1 - num2;
+  }
+
+  const multiplyOperation = (num1, num2) => {
+    return num1 * num2;
+  }
+
+  const divisionOperation = (num1, num2) => {
+    return num1 / num2;
+  }
+
+  const calculator = (e) => {
     state.operation = e.target.value;
 
     switch (state.operation) {
@@ -61,7 +77,7 @@
           <span class="symbol">=</span>
         </div>
         <div class="mb-3 d-flex justify-content-end">
-          <span class="result">0</span>
+          <span class="result">{{ calculator }}</span>
           {{ state.vlr_input_1 }}
           {{ state.operation }}
           {{ state.vlr_input_2 }}
