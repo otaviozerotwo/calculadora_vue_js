@@ -4,7 +4,8 @@
   const state = reactive({
     vlr_input_1: 0,
     vlr_input_2: 0,
-    operation: '',
+    operator: '',
+    result: 0,
   });
 
   const getInput1 = (e) => {
@@ -15,34 +16,18 @@
     return state.vlr_input_2 = e.target.value;
   }
 
-  const sumOperation = (num1, num2) => {
-    return num1 + num2;
-  }
-
-  const minusOperation = (num1, num2) => {
-    return num1 - num2;
-  }
-
-  const multiplyOperation = (num1, num2) => {
-    return num1 * num2;
-  }
-
-  const divisionOperation = (num1, num2) => {
-    return num1 / num2;
-  }
-
-  const calculator = (e) => {
-    state.operation = e.target.value;
-
-    switch (state.operation) {
+  const calculate = (num1, num2, operator) => {
+    switch (operator) {
       case '+':
-        return sumOperation();
+        return Number(num1) + Number(num2);
       case '-':
-        return minusOperation();
+        return Number(num1) - Number(num2);
       case '*':
-        return multiplyOperation();
+        return Number(num1) * Number(num2);
       case '/':
-        return divisionOperation();
+        return Number(num1) / Number(num2);
+      case '':
+        return 0;
       default:
         return 'ERROR';
     }
@@ -61,7 +46,7 @@
         <div class="mb-3 d-flex justify-content-end">
           <div class="d-flex justify-content-between align-items-center w-100 gap-2">
             <label class="select-label">Escolha a operação:</label>
-            <select @change="getOperation" class="select w-25 symbol text-center border-top-0 border-start-0 border-end-0">
+            <select v-model="state.operator" class="select w-25 symbol text-center border-top-0 border-start-0 border-end-0">
               <option value="" class="symbol" disabled selected hidden>...</option>
               <option value="+" class="symbol text-center">+</option>
               <option value="-" class="symbol text-center">-</option>
@@ -77,10 +62,7 @@
           <span class="symbol">=</span>
         </div>
         <div class="mb-3 d-flex justify-content-end">
-          <span class="result">{{ calculator }}</span>
-          {{ state.vlr_input_1 }}
-          {{ state.operation }}
-          {{ state.vlr_input_2 }}
+          <span class="result">{{ state.result = calculate(state.vlr_input_1, state.vlr_input_2, state.operator) }}</span>
         </div>
       </div>
     </div>
