@@ -26,7 +26,7 @@
   }
 
   .select {
-    background-color: #9A8C98;
+    background-color: #D8C99B;
   }
 
   .select:focus {

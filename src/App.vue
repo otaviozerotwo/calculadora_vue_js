@@ -65,7 +65,7 @@
 <style>
   .main {
     height: 100vh;
-    background-color: #9A8C98;
+    background-color: #D8C99B;
     color: #22223B;
   }
   .symbol {

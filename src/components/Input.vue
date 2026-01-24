@@ -10,7 +10,7 @@
 
 <style scoped>
   .input {
-    background-color: #9A8C98;
+    background-color: #D8C99B;
   }
 
   .input:focus {
