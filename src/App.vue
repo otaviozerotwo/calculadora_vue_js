@@ -64,6 +64,7 @@
 
 <style>
   .main {
+    height: 100vh;
     background-color: #9A8C98;
     color: #22223B;
   }
