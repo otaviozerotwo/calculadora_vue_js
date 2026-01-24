@@ -1,5 +1,9 @@
 <script setup>
   import { reactive } from 'vue';
+  import Header from './components/Header.vue';
+  import Input from './components/Input.vue';
+  import Select from './components/Select.vue';
+  import ShowResult from './components/ShowResult.vue';
 
   const state = reactive({
     vlr_input_1: 0,
@@ -32,66 +36,33 @@
         return 'ERROR';
     }
   }
-
 </script>
 
 <template>
   <div class="container">
-    <h1 class="text-center py-5">Calculadora Aritmética</h1>
+    <Header />
     <div class="row justify-content-center">
       <div class="col-md-4 col-sm-6 col-lg-4">
-        <div class="mb-3 d-flex justify-content-end">
-          <input type="number" class="input w-100 border-top-0 border-start-0 border-end-0 text-end fs-1" @keyup="getInput1">
-        </div>
-        <div class="mb-3 d-flex justify-content-end">
-          <div class="d-flex justify-content-between align-items-center w-100 gap-2">
-            <label class="select-label">Escolha a operação:</label>
-            <select v-model="state.operator" class="select w-25 symbol text-center border-top-0 border-start-0 border-end-0">
-              <option value="" class="symbol" disabled selected hidden>...</option>
-              <option value="+" class="symbol text-center">+</option>
-              <option value="-" class="symbol text-center">-</option>
-              <option value="*" class="symbol text-center">x</option>
-              <option value="/" class="symbol text-center">/</option>
-            </select>
-          </div>
-        </div>
-        <div class="mb-3 d-flex justify-content-end">
-          <input type="number" class="input w-100 border-top-0 border-start-0 border-end-0 text-end fs-1" @keyup="getInput2">
-        </div>
+        <Input :getInput="getInput1" />
+        <Select v-model:operator="state.operator" />
+        <Input :getInput="getInput2" />
         <div class="mb-3 d-flex justify-content-end">
           <span class="symbol">=</span>
         </div>
-        <div class="mb-3 d-flex justify-content-end">
-          <span class="result">{{ state.result = calculate(state.vlr_input_1, state.vlr_input_2, state.operator) }}</span>
-        </div>
+        <ShowResult 
+          :input1="state.vlr_input_1" 
+          :input2="state.vlr_input_2" 
+          :operator="state.operator" 
+          :calculate="calculate" 
+        />
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
-  .select-label {
-    font-size: 24px;
-    margin: 0;
-  }
-
-  .select:focus,
-  .input:focus {
-    outline: none;
-  }
-
-  .input::-webkit-outer-spin-button,
-  .input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-  }
-
+<style>
   .symbol {
     font-size: 36px;
     font-weight: bold;
-  }
-
-  .result {
-    font-size: 56px;
-    font-weight: 500;
   }
 </style>
