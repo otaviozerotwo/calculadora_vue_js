@@ -22,6 +22,11 @@
   .select-label {
     font-size: 24px;
     margin: 0;
+    text-shadow: 1px 1px 2px #000;
+  }
+
+  .select {
+    background-color: #9A8C98;
   }
 
   .select:focus {

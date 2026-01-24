@@ -9,6 +9,10 @@
 </template>
 
 <style scoped>
+  .input {
+    background-color: #9A8C98;
+  }
+
   .input:focus {
     outline: none;
   }

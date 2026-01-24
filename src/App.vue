@@ -39,30 +39,37 @@
 </script>
 
 <template>
-  <div class="container">
-    <Header />
-    <div class="row justify-content-center">
-      <div class="col-md-4 col-sm-6 col-lg-4">
-        <Input :getInput="getInput1" />
-        <Select v-model:operator="state.operator" />
-        <Input :getInput="getInput2" />
-        <div class="mb-3 d-flex justify-content-end">
-          <span class="symbol">=</span>
+  <div class="main">
+    <div class="container">
+      <Header />
+      <div class="row justify-content-center">
+        <div class="col-md-4 col-sm-6 col-lg-4">
+          <Input :getInput="getInput1" />
+          <Select v-model:operator="state.operator" />
+          <Input :getInput="getInput2" />
+          <div class="mb-3 d-flex justify-content-end">
+            <span class="symbol">=</span>
+          </div>
+          <ShowResult 
+            :input1="state.vlr_input_1" 
+            :input2="state.vlr_input_2" 
+            :operator="state.operator" 
+            :calculate="calculate" 
+          />
         </div>
-        <ShowResult 
-          :input1="state.vlr_input_1" 
-          :input2="state.vlr_input_2" 
-          :operator="state.operator" 
-          :calculate="calculate" 
-        />
       </div>
     </div>
   </div>
 </template>
 
 <style>
+  .main {
+    background-color: #9A8C98;
+    color: #22223B;
+  }
   .symbol {
     font-size: 36px;
     font-weight: bold;
+    color: #22223B;
   }
 </style>
